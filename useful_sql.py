@@ -23,7 +23,7 @@ def assessment_results(engine, assessment_id, limit=None):
     SELECT {top}
         s.[Student_ID],
         (s.[First_name] & ' ' & s.[Surname]) AS [StudentName],
-        SUM(Nz(r.[MarksAwarded],0)) AS [TotalScore]
+        SUM(SUM(COALESCE(r.[MarksAwarded],0)) AS [TotalScore]
         ##################################################
         #FIX THIS LATER
         ####################################################
